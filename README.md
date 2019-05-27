@@ -4,7 +4,7 @@ Web-application generator system; system for rapidly creating web-based applicat
 
 ## Version
 
-Currently, we are still developing the prototype (V-0.1) which is a very minimal representation of the final system. This version contains a lot of unfinished work and functionalities but gives a preview of the aim of this project. Straight forward, the prototype only contains the following main functionalities/views:
+Currently, we are still developing the prototype (V-0.2) which is a very minimal representation of the final system. This version contains a lot of unfinished work and functionalities but gives a preview of the aim of this project. Straight forward, the prototype only contains the following main functionalities/views:
 
 Back-end system
 - Login page (Loggin in to the backend)
