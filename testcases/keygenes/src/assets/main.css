@@ -1,0 +1,106 @@
+body{
+    font-size: 15px!important;
+    background-color: #6693d1!important;
+}
+.welcome{
+    background-color: #6693d1;
+}
+.welcome-box, .welcome{
+    min-height: 30vh;
+}
+.introName{
+    color: #fff;
+    font-size: 4em;
+    font-family: 'boldbold',PT Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    line-height: 1em!important;
+}
+.sloganText{
+    color: #ffffff;
+    font-size: 1em;
+    min-height: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.particles{
+    background-color: #6693d1!important;
+    position: absolute;
+    width: 100%!important;
+    height: 30vh;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.page-section{
+    margin-top: 20px !important;
+    padding-top: 50px!important;
+    padding-bottom: 50px!important;
+    background-color: #ffffff;
+    min-height: 70vh;
+}
+.Timeline-line{
+    background-color: gray!important;
+    z-index: 0;
+}
+button{
+    border-radius: 0 !important;
+
+}
+.mainMenu{
+    background-color: #6693d1!important;
+    border: 0 !important;
+}
+.mainMenu .item{
+    font-weight: bold  !important;
+
+}
+.timeLine div .Timeline-line{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.timeLine div .grid .row div{
+    text-align: center!important;
+    box-shadow: none!important;
+    z-index:2;
+}
+.timeLine div .grid .row div i{
+    box-shadow: none!important;
+}
+i.inverted.bordered.blue.icon, i.inverted.circular.blue.icon{
+    background-color: #6693d1!important;
+    z-index: 1;
+}
+.ui.blue.label, .ui.blue.labels .label, button.blue, a.blue{
+    background-color: #6693d1!important;
+}
+a.blue.label{
+    color: #6693d1!important;
+}
+.SlideIn-appear {
+    transform: translateX(30px);
+    opacity: 0;
+}
+.SlideIn-appear.SlideIn-appear-active {
+    opacity: 1;
+    transform: translateX(0);;
+    transition: all 0.6s linear;
+}
+.SlideIn-enter {
+    opacity: 0;
+    transform: translateX(30px);
+}
+.SlideIn-enter.SlideIn-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.2s linear 0.4s;
+}
+.SlideIn-leave {
+    opacity: 1.0;
+    transform: translateX(0);
+}
+.SlideIn-leave.SlideIn-leave-active {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transform: translateX(-30px);
+    transition: all 0.2s linear;
+}

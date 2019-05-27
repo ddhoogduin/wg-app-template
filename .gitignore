@@ -1,0 +1,6 @@
+client/.idea
+client/node_modules
+server/.idea
+testcases/keygenes/.idea
+testcases/keygenes/node_modules
+server/constants/types/__pycache__
