@@ -1,0 +1,83 @@
+.loginSection{
+    height: 100vh!important;
+    background-color: #6693d1;
+}
+.loginSection .frameContainer{
+    height: 100vh!important;
+}
+.appContent{
+    background-color: #ffffff;
+}
+.sascLogo{
+    font-weight: 600;
+    color: #fff !important;
+    font-size: 50px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.errorMessage{
+    padding: 10px 0 10px;
+    font-size: 12px;
+    color: #dd8d3c;
+    font-style: italic;
+}
+.container{
+    margin-top: 50px;
+}
+.container-no-margin{
+    margin-top: 0 !important;
+}
+.client-container{
+    background-color: #f7f7f7 !important;
+}
+.pull-right{
+    float: right;
+}
+.user-role-menu{
+    font-size: 11px;
+    text-align: center;
+    color: #787878;
+}
+.no-offset{
+    margin-top: 0!important;
+    padding-top: 0!important;
+}
+.client-content-container{
+    min-height: 100vh;
+}
+.sidebar-client{
+    background-color: #1b1c1d !important;
+}
+.logo-menu-box{
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.logo-menu-box .header{
+    color: #ffffff;
+}
+.logo-menu-box .header .sub.header{
+    color: #b8b8b8;
+}
+.mainContent-client{
+    min-height: 100vh;
+    background-color: #f7f7f7 !important;
+}
+.breadCrumb{
+    margin-top: 50px !important;
+    font-size: 15px !important;
+    font-weight: bold;
+}
+.client-content-segment{
+    min-height: 60vh;
+}
+.dividerSub{
+    font-weight: 400 !important;
+    font-size: 13px;
+}
+.mainTitleContentClient{
+    font-size: 16px !important;
+    text-transform: none!important;
+}
