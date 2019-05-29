@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import {userLogin} from '../actions/user/authenticationUserActions'
+import {userLogin} from '../../actions/user/authenticationUserActions'
 
-import LoginForm from '../components/pages/login/LoginForm'
+import LoginForm from '../../components/pages/login/LoginForm'
 
 class LoginContainer extends Component{
 

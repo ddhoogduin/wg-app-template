@@ -15,7 +15,7 @@ import {
     PolarRadiusAxis, Radar,
 } from 'recharts'
 import {Grid, Header, Icon, Image, Label, List} from "semantic-ui-react";
-import ComponentFrame from "../../modules/ComponentFrame";
+import ComponentFrameClient from "../../../modules/client/ComponentFrameClient";
 
 
 class HomeClient extends Component{
@@ -59,11 +59,6 @@ class HomeClient extends Component{
 
     render(){
         return (
-            <ComponentFrame
-                name={'Home'}
-                description={'Overview of client'}
-                breadCrumb={`${this.props.client.name}`}
-            >
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={8}>
@@ -188,8 +183,6 @@ class HomeClient extends Component{
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </ComponentFrame>
-
 
         );
     }

@@ -3,11 +3,11 @@ import {connect} from "react-redux";
 import {Router, Route, Switch} from 'react-router-dom'
 import history from '../history'
 
-import LoginContainer from './LoginContainer'
+import LoginContainer from './login/LoginContainer'
 import App from "../components/App";
 
-import DashboardContainer from "./DashboardContainer";
-import ClientContainer from "./ClientContainer"
+import DashboardContainer from "./dashboard/DashboardContainer";
+import ClientContainer from "./client/ClientContainer"
 
 
 class AppContainer extends Component{

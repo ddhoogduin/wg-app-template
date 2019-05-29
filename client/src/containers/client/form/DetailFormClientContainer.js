@@ -1,11 +1,10 @@
 import React, {Component, PureComponent} from 'react'
 import {connect} from "react-redux";
-import _ from 'lodash'
 
 
 import {addInput, getInputList, removeInput, addInputOption, removeInputOption} from '../../../actions/client/inputClientActions'
 import {getForm, uploadForm} from '../../../actions/client/formClientActions'
-import DetailFormClient from "../../../components/pages/client/form/DetailFormClient";
+import DetailFormClient from "../../../components/pages/client/detail/DetailFormClient";
 import {
     getFormValues
 } from 'redux-form'
@@ -29,7 +28,7 @@ class DetailFormClientContainer extends Component{
     };
     removeInputOption = (inputId, index) =>{
         this.props.removeInputOption(inputId, index)
-    }
+    };
     generateInput = () =>{
         const formValues = this.props.formValues;
         this.props.addInput({

@@ -15,9 +15,11 @@ const verifyGetFormList = (response) =>{
 };
 
 export const getFormList = () => async (dispatch, getState) =>{
+        console.log('here');
         const response = await SascWebApi.get(`/form/${getState().activeClient.alias}/list`);
+        console.log(response);
         dispatch(verifyGetFormList(response));
-}
+};
 
 const verifyGetForm = (response) =>{
     if(response.data.success === false){

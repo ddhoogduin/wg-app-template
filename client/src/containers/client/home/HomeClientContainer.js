@@ -1,6 +1,6 @@
 import React, {Component, PureComponent} from 'react'
 import {connect} from "react-redux";
-import HomeClient from "../../components/pages/client/HomeClient";
+import HomeClient from "../../../components/pages/client/home/HomeClient";
 
 
 

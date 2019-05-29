@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import DashboardOverview from "../components/pages/dashboard/DashboardOverview";
-import {getClients} from '../actions/client/clientActions'
+import DashboardOverview from "../../components/pages/dashboard/DashboardOverview";
+import {getClients} from '../../actions/client/clientActions'
 import _ from 'lodash'
 
 class DashboardContainer extends Component{

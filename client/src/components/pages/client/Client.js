@@ -15,12 +15,11 @@ import {
     Sidebar, Header, Divider
 } from 'semantic-ui-react'
 import userOptions from '../../modules/userOptions'
-import clientBreadcrumbs from '../../modules/clientBreadcrumbs'
 
 import '../../../assets/main.css'
 import {Link} from "react-router-dom";
 
-class ClientMain extends Component{
+class Client extends Component{
 
     renderMenuItems(){
         return this.props.menuItems.items.map(
@@ -45,7 +44,6 @@ class ClientMain extends Component{
                     icon='labeled'
                     vertical
                     visible={true}
-                    width={'wide'}
                 >
                     <div className={'logo-menu-box'}>
                         <Header as='h1' icon>
@@ -117,4 +115,4 @@ class ClientMain extends Component{
     }
 }
 
-export default ClientMain
+export default Client

@@ -1,13 +1,15 @@
 import React, {Component, PureComponent} from 'react'
 import {connect} from "react-redux";
 
-import OverviewFormClient from '../../../components/pages/client/form/OverviewFormClient'
 import {getFormList} from '../../../actions/client/formClientActions'
 import _ from "lodash";
+import OverviewClientContainer from "../OverviewClientContainer";
 
 
-class OverviewFormClientContainer extends Component{
-
+class OverviewFormClientContainer extends OverviewClientContainer{
+    client=this.props.client;
+    pk='id';
+    entity='form';
     tableHeaders=[
         {label: '#', name:'number', format:'row-number'},
         {label: 'Published', name:'number', format:'slide'},
@@ -15,23 +17,14 @@ class OverviewFormClientContainer extends Component{
         {label: 'API', name:'api_name'},
         {label: 'Modified at', name:'modified_at', format:'dateTime'},
     ];
-
-    componentDidMount() {
-        this.props.getFormList()
-    }
-    render(){
-        return (
-            <OverviewFormClient
-                tableHeaders={this.tableHeaders}
-                listFormClient={this.props.listFormClient}
-                client={this.props.client}
-            />
-        );
+    getData = async () => {
+        await this.props.getFormList();
+        return true
     }
 }
 const mapStateToProps = (state) => {
     return {
-        listFormClient: _.values(state.listFormClient),
+        overviewData: _.values(state.listFormClient),
         client: state.activeClient
     }
 };

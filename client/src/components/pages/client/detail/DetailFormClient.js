@@ -6,9 +6,8 @@ import {
     Checkbox, Form, Tab, Dropdown, Popup
 } from 'semantic-ui-react'
 
-import ComponentFrame from "../../../modules/ComponentFrame";
 import {Field, reduxForm, change} from "redux-form";
-import {textInput, sliderInput, selectInput} from "../../../helpers/redux-form-inputs";
+import {textInput, sliderInput, selectInput} from "../../../helpers/redux-form-inputs/index";
 import { required} from "../../../../constants/formValidationRules";
 import _ from 'lodash'
 
@@ -239,16 +238,10 @@ class DetailFormClient extends Component{
     }
     render() {
         return(
-            <ComponentFrame
-                name={'Edit forms'}
-                description={'Edit a client form'}
-                breadCrumb={`${this.props.client.name} / Forms / Edit form`}
-            >
                 <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Tab panes={this.panes} />
                 <Button type='submit' disabled={this.props.submitting} fluid>Save</Button>
                 </Form>
-            </ComponentFrame>
         )
     }
 }

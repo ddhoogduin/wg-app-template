@@ -4,3 +4,4 @@ server/.idea
 testcases/keygenes/.idea
 testcases/keygenes/node_modules
 server/constants/types/__pycache__
+.DS_Store

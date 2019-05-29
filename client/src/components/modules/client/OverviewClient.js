@@ -7,10 +7,8 @@ import {
 } from 'semantic-ui-react'
 
 import {Link} from "react-router-dom";
-import clientComponentDescription from '../../../modules/clientComponentDescription'
-import ComponentFrame from '../../../modules/ComponentFrame'
 
-class OverviewFormClient extends Component{
+class OverviewClient extends Component{
 
     renderTableHeaders = () =>(
             <Table.Header>
@@ -63,11 +61,6 @@ class OverviewFormClient extends Component{
     // render form overview
     render() {
         return(
-            <ComponentFrame
-                name={'Forms'}
-                description={'Overview of client forms'}
-                breadCrumb={`${this.props.client.name} / Forms`}
-            >
             <Table basic>
                 {this.renderTableHeaders()}
                 {this.renderTableContent()}
@@ -82,9 +75,8 @@ class OverviewFormClient extends Component{
                     </Table.Row>
                 </Table.Footer>
             </Table>
-            </ComponentFrame>
         )
     }
 }
 
-export default OverviewFormClient
+export default OverviewClient

@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
-import {Divider, Grid, Icon, Segment, Sidebar} from "semantic-ui-react";
-import clientBreadcrumbs from "./clientBreadcrumbs";
-import OverviewFormClient from "../pages/client/form/DetailFormClient";
+import {Divider, Grid, Icon, Segment, Sidebar, Transition} from "semantic-ui-react";
 
-class ComponentFrame extends Component{
+class ComponentFrameClient extends Component{
     render(){
         return (
+            <Transition
+                unmountOnHide={true}
+                animation={"fade up"}
+                duration={{ show:500 }}
+                transitionOnMount={true}
+                key={`client-content-item-${this.props.name}`}
+            >
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={1}/>
@@ -28,7 +33,8 @@ class ComponentFrame extends Component{
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </Transition>
         )
     }
 }
-export default ComponentFrame
+export default ComponentFrameClient
