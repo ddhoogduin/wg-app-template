@@ -32,3 +32,11 @@ export const input ={
 export const clientManager = {
     UNSET_REDIRECT: "UNSET_REDIRECT"
 }
+
+export const overview = {
+    OVERVIEW_ADD: 'ACTION_ADD',
+    OVERVIEW_PUBLISH: 'ACTION_PUBLISH',
+    OVERVIEW_UNPUBLISH: 'ACTION_UNPUBLISH',
+    OVERVIEW_REMOVE: 'ACTION_REMOVE',
+    OVERVIEW_SET_ACTIVE: 'ACTION_SET_ACTIVE'
+}

@@ -1,24 +1,10 @@
 import SascWebApi from '../../apis/SascWeb'
 import {form} from '../../constants/types'
+import {getList} from './overviewClientActions'
 
 
-const verifyGetFormList = (response) =>{
-    if(response.data.success === false){
-        return {
-            type: form.FORM_LIST_FAILED
-        }
-    }
-    return {
-        type: form.FORM_LIST_SUCCESS,
-        payload: response.data.items
-    }
-};
-
-export const getFormList = () => async (dispatch, getState) =>{
-        console.log('here');
-        const response = await SascWebApi.get(`/form/${getState().activeClient.alias}/list`);
-        console.log(response);
-        dispatch(verifyGetFormList(response));
+export const getFormList = () => async (dispatch) =>{
+        dispatch(await getList('form', form.FORM_LIST_SUCCESS, form.FORM_LIST_FAILED));
 };
 
 const verifyGetForm = (response) =>{

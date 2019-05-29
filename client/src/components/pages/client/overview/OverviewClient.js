@@ -13,12 +13,13 @@ class OverviewClient extends Component {
 
     renderTableHeaders = () => {
         const listValue = _.keys(_.pickBy(this.props.selection)).length;
-        console.log((listValue > 0));
         return (<Table.Header>
             <Table.Row>
                 <Table.HeaderCell key={`${this.props.entity}TableHeader-Check`}>
-                    <Checkbox checked={(this.props.data.length === listValue)}
-                              defaultIndeterminate={(this.props.data.length === listValue)}
+                    <Checkbox
+                              checked={(this.props.data.length === listValue)}
+                              indeterminate={(this.props.data.length !== listValue && listValue > 0)}
+                              onClick={(e, data) => this.props.setSelection(e, data)}
                     />
                 </Table.HeaderCell>
                 {
@@ -35,7 +36,8 @@ class OverviewClient extends Component {
     renderColumnValue = (rowIndex, attribute, format, item) => {
         switch (format) {
             case 'slide':
-                return <Checkbox slider color={'green'}/>;
+                console.log(item[attribute]);
+                return <Checkbox toggle  checked={item[attribute]} onClick={() => this.props.publishItem(item[this.props.pk])}/>;
             case 'row-number':
                 return (rowIndex + 1);
             case 'link-detail':
@@ -84,26 +86,19 @@ class OverviewClient extends Component {
         </Table.Body>
     );
     renderTableActions = () => {
-        return (
-            <>
-            <Button floated='left' icon labelPosition='left' color={'green'} size='tiny'>
-                <Icon name='clipboard'/> Add new
-            </Button>
-            <Button floated='left' icon labelPosition='left' color={'blue'} size='tiny'>
-                <Icon name='eye'/> Publish
-            </Button>
-            <Button floated='left' icon labelPosition='left' color={'yellow'} size='tiny'>
-                <Icon name='hide'/> Unpublish
-            </Button>
-            <Button floated='left' icon labelPosition='left' color={'red'} size='tiny'>
-                <Icon name='trash'/> Delete
-            </Button>
-            <Input
-                placeholder='Search...'
-                value={this.props.searchTerm}
-                onChange={(e) => this.props.searchTable(e)}/>
-
-            </>
+        const buttons = this.props.dataActions;
+        return this.props.dataActionConfiguration.map(
+            (item, key) =>(
+                <Button
+                    onClick={()=>buttons[item].action()}
+                    key={`actionButton-${key}`}
+                    floated='left'
+                    icon labelPosition='left'
+                    color={buttons[item].color}
+                    size='tiny'>
+                    <Icon name={buttons[item].icon}/> {buttons[item].text}
+                </Button>
+            )
         )
     };
 

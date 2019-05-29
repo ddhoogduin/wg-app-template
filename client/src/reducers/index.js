@@ -7,7 +7,6 @@ import clientReducer from "./client/listClientReducer";
 import activeClientReducer from "./client/activeClientReducer";
 import activeFormClientReducer from "./client/form/activeFormClientReducer";
 import listInputReducer from "./client/input/listInputReducer"
-import managerClientReducer from "./client/managerClientReducer";
 
 export default combineReducers({
     form: formReducer,
@@ -17,5 +16,5 @@ export default combineReducers({
     activeClient: activeClientReducer,
     listFormClient: listFormClientReducer,
     activeFormClient: activeFormClientReducer,
-    listInput: listInputReducer
+    listInput: listInputReducer,
 });
