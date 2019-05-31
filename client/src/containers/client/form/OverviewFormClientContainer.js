@@ -1,33 +1,49 @@
 import React, {Component, PureComponent} from 'react'
 import {connect} from "react-redux";
 
-import {getFormList} from '../../../actions/client/formClientActions'
+import {getFormList, togglePublishFormList} from '../../../actions/client/formClientActions'
 import _ from "lodash";
 import OverviewClientContainer from "../OverviewClientContainer";
 import {overview} from '../../../constants/types'
 import {setActiveOverview} from "../../../actions/client/overviewClientActions";
+import OverviewClient from "../../../components/pages/client/overview/OverviewClient";
 
-class OverviewFormClientContainer extends OverviewClientContainer{
-    client=this.props.client;
-    pk='id';
+class OverviewFormClientContainer extends Component{
     entity='form';
+    pk='id';
+    addItem = (selection) =>{console.log('test')};
+    togglePublishItem = (pk) => {console.log(pk)};
+    publishSelection = (selection) =>{this.props.togglePublishFormList(selection, 1)};
+    unpublishSelection = (selection) =>{this.props.togglePublishFormList(selection, 0)};
+    removeSelection = () =>{console.log('test')};
     tableHeaders=[
         {label: '#', name:'number', format:'row-number'},
-        {label: 'Published', name:'published', format:'slide'},
+        {label: 'Published', name:'published', format:'slide', action: this.togglePublishItem},
         {label: 'Name', name:'name', format:'link-detail'},
         {label: 'API', name:'api_name'},
         {label: 'Modified at', name:'modified_at', format:'dateTime'},
     ];
     dataActionConfiguration = [
-        overview.OVERVIEW_ADD,
-        overview.OVERVIEW_PUBLISH,
-        overview.OVERVIEW_UNPUBLISH,
-        overview.OVERVIEW_REMOVE
+        {type: overview.OVERVIEW_ADD, action: this.addItem},
+        {type: overview.OVERVIEW_PUBLISH, action: this.publishSelection},
+        {type: overview.OVERVIEW_UNPUBLISH, action: this.unpublishSelection},
+        {type: overview.OVERVIEW_REMOVE, action: this.removeSelection}
     ];
-    publishItem = (pk) => {};
     componentDidMount() {
         this.props.getFormList();
-        super.componentDidMount();
+    }
+    render(){
+        return (
+            <OverviewClientContainer
+                client={this.props.client}
+                entity={this.entity}
+                pk={this.pk}
+                data={this.props.overviewData}
+                tableHeaders={this.tableHeaders}
+                publishItem={this.publishItem}
+                dataActionConfiguration={this.dataActionConfiguration}
+            />
+        )
     }
 }
 const mapStateToProps = (state) => {
@@ -37,5 +53,5 @@ const mapStateToProps = (state) => {
     }
 };
 export default connect(mapStateToProps,
-    {getFormList})
+    {getFormList, togglePublishFormList})
 (OverviewFormClientContainer);

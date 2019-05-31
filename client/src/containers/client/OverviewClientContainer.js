@@ -8,31 +8,21 @@ import {setActiveOverview} from '../../actions/client/overviewClientActions'
 import {connect} from "react-redux";
 
 class OverviewClientContainer extends Component{
-
-    client;
-    pk;
-    entity;
-    tableHeaders;
-    addItem = () => {this.throwMethodImplementationError()};
-    publishItem = () => {this.throwMethodImplementationError()};
-    publishSelection = () => {this.throwMethodImplementationError()};
-    unpublishSelection = () => {this.throwMethodImplementationError()};
-    deleteSelection = () => {this.throwMethodImplementationError()};
     dataActions = {
-        [overview.OVERVIEW_ADD]:{color:'green', action: this.addItem, text:'Add new', icon:'clipboard'},
-        [overview.OVERVIEW_PUBLISH]:{color:'blue', action: this.publishSelection, text:'Publish', icon:'eye'},
-        [overview.OVERVIEW_UNPUBLISH]:{color:'yellow', action: this.unpublishSelection, text:'Unpublish', icon:'hide'},
-        [overview.OVERVIEW_REMOVE]:{color:'red', action: this.deleteSelection, text:'Delete', icon:'trash'}
+        [overview.OVERVIEW_ADD]:{color:'green', action: this.props.addItem, text:'Add new', icon:'clipboard'},
+        [overview.OVERVIEW_PUBLISH]:{color:'blue', action: this.props.publishSelection, text:'Publish', icon:'eye'},
+        [overview.OVERVIEW_UNPUBLISH]:{color:'yellow', action: this.props.unpublishSelection, text:'Unpublish', icon:'hide'},
+        [overview.OVERVIEW_REMOVE]:{color:'red', action: this.props.deleteSelection, text:'Delete', icon:'trash'}
     };
     dataActionConfiguration = [];
     state = {searchTerm:'', selected :{}};
 
     componentDidMount(){
-        if(!this.props.overviewData){
+        if(!this.props.data){
             throw new Error(` no overviewData prop loaded`)
         }
         let selectedTmp = {};
-        this.props.overviewData.map(
+        this.props.data.map(
             (item) => {
                 selectedTmp[item.id] = false
             });
@@ -57,24 +47,20 @@ class OverviewClientContainer extends Component{
     render(){
         return (
             <OverviewClient
-                entity={this.entity}
-                pk={this.pk}
-                tableHeaders={this.tableHeaders}
-                data={this.props.overviewData}
-                publishItem={this.publishItem}
-                client={this.client}
+                entity={this.props.entity}
+                pk={this.props.pk}
+                tableHeaders={this.props.tableHeaders}
+                data={this.props.data}
+                client={this.props.client}
                 searchTerm={this.state.searchTerm}
                 searchTable={this.searchTable}
                 selection={this.state.selected}
                 setSelectOne={this.setSelectOne}
                 setSelection={this.setSelection}
                 dataActions={this.dataActions}
-                dataActionConfiguration={this.dataActionConfiguration}
+                dataActionConfiguration={this.props.dataActionConfiguration}
             />
         );
-    }
-    throwMethodImplementationError = () =>{
-        throw new Error(` no method implemented from child class`)
     }
 }
 

@@ -29,7 +29,7 @@ const verifyGetInputList = (response) =>{
 
 export const getInputList = (formId) => async (dispatch, getState) =>{
     const response = await SascWebApi.get(`/input/${getState().activeClient.alias}/${formId}/list`);
-    dispatch(verifyGetInputList(response));
+    return dispatch(verifyGetInputList(response));
 }
 
 export const addInputOption = (id, value, label) => {

@@ -12,3 +12,4 @@ SQLAlchemy==1.3.3
 Werkzeug==0.15.2
 Flask-SQLAlchemy
 environs
+psycopg2

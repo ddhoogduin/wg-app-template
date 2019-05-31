@@ -36,8 +36,8 @@ class OverviewClient extends Component {
     renderColumnValue = (rowIndex, attribute, format, item) => {
         switch (format) {
             case 'slide':
-                console.log(item[attribute]);
-                return <Checkbox toggle  checked={item[attribute]} onClick={() => this.props.publishItem(item[this.props.pk])}/>;
+                console.log('published'+item[attribute]);
+                return <Checkbox toggle  checked={(item[attribute] === 'True')} onClick={() => this.props.publishItem(item[this.props.pk])}/>;
             case 'row-number':
                 return (rowIndex + 1);
             case 'link-detail':
@@ -90,13 +90,13 @@ class OverviewClient extends Component {
         return this.props.dataActionConfiguration.map(
             (item, key) =>(
                 <Button
-                    onClick={()=>buttons[item].action()}
+                    onClick={()=>item.action(this.props.selection)}
                     key={`actionButton-${key}`}
                     floated='left'
                     icon labelPosition='left'
-                    color={buttons[item].color}
+                    color={buttons[item.type].color}
                     size='tiny'>
-                    <Icon name={buttons[item].icon}/> {buttons[item].text}
+                    <Icon name={buttons[item.type].icon}/> {buttons[item.type].text}
                 </Button>
             )
         )
