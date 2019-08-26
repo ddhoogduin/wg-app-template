@@ -23,7 +23,8 @@ The directus suite requires a LAMP environment in order to function.
 * Apache
 * MySQL 5.7+
 * PHP 7.1+
-      * Extensions: pdo, mysql, curl, gd, fileinfo, libapache2-mod-php and mbstring
+* PHP 7.1+
+    * Extensions: pdo, mysql, curl, gd, fileinfo, libapache2-mod-php and mbstring
 
 Click [here](https://docs.directus.io/getting-started/installation.html) for more info about the config of the environment.
 
