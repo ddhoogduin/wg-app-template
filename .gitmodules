@@ -1,9 +1,3 @@
-[submodule "client"]
-	path = client
-	url = https://github.com/ddhoogduin/webapp-gen-client.git
-[submodule "server"]
-	path = server
-	url = https://github.com/ddhoogduin/webapp-gen-server.git
 [submodule "testcases"]
 	path = testcases
 	url = https://github.com/ddhoogduin/webapp-gen-testcases.git
