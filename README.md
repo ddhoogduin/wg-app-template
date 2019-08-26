@@ -28,7 +28,7 @@ The directus suite requires a LAMP environment in order to function.
 
 Click [here](https://docs.directus.io/getting-started/installation.html) for more info about the config of the environment.
 
-The database in folder: /databases need to be installed in MySQL follow the same name as the files implies.
+The databases in folder: /databases, need to be installed in MySQL follow the same name as the files implies.
 
 ### Test cases
 Test case applications are created in ReactJS and follow the default installation procedure.
