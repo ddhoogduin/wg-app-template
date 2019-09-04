@@ -1,17 +1,14 @@
 <?php
-
 return [
     'app' => [
         'env' => 'production',
         'timezone' => 'UTC',
     ],
-
     'settings' => [
         'logger' => [
             'path' => __DIR__ . '/../logs',
         ],
     ],
-
     'database' => [
         'type' => 'mysql',
         'host' => 'localhost',
@@ -25,7 +22,6 @@ return [
         // 'socket' => '/var/lib/mysql/mysql.sock',
         'socket' => '',
     ],
-
     'cache' => [
         'enabled' => false,
         'response_ttl' => 3600, // seconds
@@ -63,7 +59,6 @@ return [
         //    'port'      => 6379
         // ],
     ],
-
     'storage' => [
         'adapter' => 'local',
         // The storage root is the directus root directory.
@@ -88,7 +83,6 @@ return [
         // Use an internal proxy for downloading all files
         // 'proxy_downloads' => '',
     ],
-
     'mail' => [
         'default' => [
             'transport' => 'sendmail',
@@ -101,28 +95,26 @@ return [
             'from' => 'admin@example.com'
         ],
     ],
-
     'cors' => [
         'enabled' => true,
         'origin' => array (
-  0 => '*',
-),
+            0 => '*',
+        ),
         'methods' => array (
-  0 => 'GET',
-  1 => 'POST',
-  2 => 'PUT',
-  3 => 'PATCH',
-  4 => 'DELETE',
-  5 => 'HEAD',
-),
+            0 => 'GET',
+            1 => 'POST',
+            2 => 'PUT',
+            3 => 'PATCH',
+            4 => 'DELETE',
+            5 => 'HEAD',
+        ),
         'headers' => array (
-),
+        ),
         'exposed_headers' => array (
-),
+        ),
         'max_age' => 600, // in seconds
         'credentials' => false,
     ],
-
     'rate_limit' => [
         'enabled' => false,
         'limit' => 100, // number of request
@@ -132,20 +124,16 @@ return [
         'port' => 6379,
         'timeout' => 10,
     ],
-
     'hooks' => [
         'actions' => [],
         'filters' => [],
     ],
-
     'feedback' => [
         'token' => 'fcdccd64f41eb01b83a077dca62cffb0e6088be4',
         'login' => true
     ],
-
     // These tables will not be loaded in the directus schema
     'tableBlacklist' => [],
-
     'auth' => [
         'secret_key' => '+NT;JM,{Fv!@HaOs0I$9rZRWDfdv{vaY',
         'public_key' => '7065b519-bf88-4f1e-ba73-930a703fff59',

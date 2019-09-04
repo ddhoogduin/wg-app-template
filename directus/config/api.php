@@ -8,7 +8,7 @@ return [
 
     'settings' => [
         'logger' => [
-            'path' => __DIR__ . '/../logs',
+            'path' => '/Users/ddhoogduin/Sites/testing/directus/src/core/Directus/Util/Installation/../../../../../logs',
         ],
     ],
 
@@ -16,7 +16,7 @@ return [
         'type' => 'mysql',
         'host' => 'localhost',
         'port' => 3306,
-        'name' => 'directus',
+        'name' => 'directus2',
         'username' => 'root',
         'password' => 'password',
         'engine' => 'InnoDB',
@@ -139,7 +139,7 @@ return [
     ],
 
     'feedback' => [
-        'token' => 'fcdccd64f41eb01b83a077dca62cffb0e6088be4',
+        'token' => '241c7f7724b15b43c0c12adf661f556a97c5a259',
         'login' => true
     ],
 
@@ -147,8 +147,8 @@ return [
     'tableBlacklist' => [],
 
     'auth' => [
-        'secret_key' => '+NT;JM,{Fv!@HaOs0I$9rZRWDfdv{vaY',
-        'public_key' => '7065b519-bf88-4f1e-ba73-930a703fff59',
+        'secret_key' => 'Zs3z43GNQLGVlV5lL8CNsoQrAwOKiNCA',
+        'public_key' => '6d60026c-de59-4e6d-a062-6c3e197ef2bf',
         // 'social_providers' => '',
         // 'okta' => [
         //     'client_id' => '',
