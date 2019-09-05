@@ -26,7 +26,7 @@ class AppConfig:
             elif argv[1] == self.tasks[1]:
                 self.create_new()
             elif argv[1] == self.tasks[2]:
-                pass
+                self.remove_pj()
             elif argv[1] == self.tasks[3]:
                 pass
             else:
@@ -70,9 +70,7 @@ class AppConfig:
         existing_databases = self.db_connection.execute("SHOW DATABASES;")
         return True if name in [d[0] for d in existing_databases] else False
 
-    def q_database(self):
-        db_name_exist = True
-        name_convention = False
+    def login_db(self):
         while True:
             user = input("Enter database user:")
             password = getpass("Enter database password:")
@@ -80,6 +78,12 @@ class AppConfig:
                 self.db_user = user
                 self.db_password = password
                 break
+        return user, password
+
+    def q_database(self):
+        db_name_exist = True
+        name_convention = False
+        user, password = self.login_db()
         while db_name_exist and not name_convention:
             name = input("Enter a unique, not existing database name (auto corrected):")
             name = re.sub('[\W_]+', '', name)
@@ -137,13 +141,46 @@ class AppConfig:
     def create_new(self):
         if self.q_database() and self.q_project():
             self.insert_new()
-            with open('projects.json', 'w') as fp:
-                json.dump(self.pj_list, fp)
-            pj_data = {}
-            for project in self.pj_list:
-                pj_data[project['path']] = project['name']
-            with open('pj_data.json', 'w') as fp:
-                json.dump(pj_data, fp)
+            self.write_pjs()
+
+    def write_pjs(self):
+        with open('projects.json', 'w') as fp:
+            json.dump(self.pj_list, fp)
+        pj_data = {}
+        for project in self.pj_list:
+            pj_data[project['path']] = project['name']
+        with open('pj_data.js', 'w') as fp:
+            data = json.dumps(pj_data)
+            fp.write("const pj_data = JSON.parse('{data}')".format(data=data))
+
+    def clear_pj(self, ref, keep_db):
+        for i in range(len(self.pj_list)):
+            if self.pj_list[i]['ref'] == ref:
+                del self.pj_list[i]
+                break
+        os.system('rm -f ./../config/api.{ref}.php'.format(ref=ref))
+        if keep_db == 'n':
+            self.login_db()
+            self.db_connection.execute('DROP DATABASE {name}'.format(name=ref))
+
+    def remove_pj(self):
+        print(self.get_list())
+        while True:
+            ref = input("\nEnter a reference id to delete:")
+            if not self.check_unique_from_dict('ref', ref):
+                break
+            else:
+                print("Not a valid reference id, try again...")
+        while True:
+            keep_db = input("\nDo you want to keep the database?(y/n):")
+            if keep_db in ['y','n']:
+                break
+            else:
+                print("Not a valid input, try again...")
+        self.clear_pj(ref, keep_db)
+        self.write_pjs()
+        print(self.get_list())
+        print("\nProjects {ref} deleted".format(ref=ref))
 
     def get_help(self):
         return "\nselect one of the following:\n\n" \
@@ -151,7 +188,6 @@ class AppConfig:
                "- create \n" \
                "- delete \n" \
                "- templates \n"
-
 
     def raise_error(self, content):
         raise Exception("\n\n-- Error --\n{content}\n".format(content=content))
