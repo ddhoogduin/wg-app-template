@@ -1,1 +1,0 @@
-var mydata = JSON.parse(pj_data);
