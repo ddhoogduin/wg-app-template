@@ -1,0 +1,1 @@
+# wg-app-template
