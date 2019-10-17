@@ -4,15 +4,18 @@ import {Field, reduxForm, reset} from "redux-form";
 import {required} from "../../constants/formValidationRules";
 import {fileInput, selectInput, textInput} from "../helpers/redux-form-inputs";
 import {throwError, validateAttributes} from "../../utils/generalHelpers";
+import {protocol} from "../../constants/types";
 
 class FormModule extends Component{
 
+    state = {fileInputCode: 'fileCode'};
     onSubmit = (formValues, dispatch) =>{
         this.props.onSubmit(
             this.props.collection['form'][0],
             formValues
         );
         dispatch(reset('mainForm'));
+        this.setState({fileInputCode: Math.random().toString(36).substring(7)})
     };
     renderForm(){
         if(this.props.collection['inputs'].length < 1){
@@ -48,7 +51,7 @@ class FormModule extends Component{
             case 'file':
                 return (
                     <Field
-                        key={`field-input-${key}`}
+                        key={`field-input-${key}-${this.state.fileInputCode}`}
                         name={input.api_reference_parameter}
                         component={fileInput}
                         label={input.label}
@@ -110,31 +113,42 @@ class FormModule extends Component{
         if (!validateAttributes(this.props.collection['inputs'][0], required_attributes)){
             throwError.moduleAttr(module, required_attributes);return null}
         return(
-                <Grid.Row>
-                    <Grid.Column>
-                        {(this.props.protocolStatus)?(
-                            <Transition
-                                transitionOnMount={true}
-                                animation={"slide down"}
-                                duration={{ show:1000 }}
-                            >
-                                <Segment color={'green'}>
-                                    <b>Algorithm executed!</b> Dataset will be in your mail when ready
-                                </Segment>
-                            </Transition>
-                        ):''
-                        }
-                        <h3>Configuration</h3>
-                        <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                            {this.renderForm()}
-                        </Form>
-                    </Grid.Column>
-                </Grid.Row>
+            <Grid.Row>
+                <Grid.Column>
+                    {(this.props.protocolStatus === protocol.PROTOCOL_COMPLETED)?(
+                        <Transition
+                            transitionOnMount={true}
+                            animation={"slide down"}
+                            duration={{ show:1000 }}
+                        >
+                            <Segment color={'green'}>
+                                <b>Algorithm executed!</b> Dataset will be in your mail when ready
+                            </Segment>
+                        </Transition>
+                    ):''
+                    }
+                    {(this.props.protocolStatus === protocol.PROTOCOL_FAILED)?(
+                        <Transition
+                            transitionOnMount={true}
+                            animation={"slide down"}
+                            duration={{ show:1000 }}
+                        >
+                            <Segment color={'red'}>
+                                <b>Algorithm encountered an error!</b> please make sure the configuration is setup correctly
+                            </Segment>
+                        </Transition>
+                    ):''
+                    }
+                    <h3>Configuration</h3>
+                    <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                        {this.renderForm()}
+                    </Form>
+                </Grid.Column>
+            </Grid.Row>
         )
     }
 
 }
 export default reduxForm({
-    form:'mainForm',
-    enableReinitialize : true
+    form:'mainForm'
 })(FormModule)
